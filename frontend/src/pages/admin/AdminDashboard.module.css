@@ -1,0 +1,658 @@
+/* admindashboard.module.css */
+
+/* Variables de diseño */
+.adminDashboard {
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --primary-light: #e0e7ff;
+  --secondary: #10b981;
+  --danger: #ef4444;
+  --danger-light: #fee2e2;
+  --warning: #f59e0b;
+  --success: #10b981;
+  --text: #1f2937;
+  --text-light: #6b7280;
+  --bg: #f9fafb;
+  --bg-card: #ffffff;
+  --border: #e5e7eb;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --radius-sm: 0.25rem;
+  --radius: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+
+.container {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Header moderno con gradiente */
+.header {
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.025em;
+}
+
+.logo svg {
+  transition: transform 0.3s ease;
+}
+
+.logo:hover svg {
+  transform: rotate(-5deg);
+}
+
+/* Barra de búsqueda moderna */
+.searchBar {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: var(--radius-lg);
+  padding: 0.5rem 1rem;
+  width: 450px;
+  color: var(--text-light);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+.searchBar:focus-within {
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+  border-color: var(--primary);
+}
+
+.searchBar svg {
+  color: var(--text-light);
+}
+
+.searchBar input {
+  border: none;
+  outline: none;
+  padding: 0.5rem;
+  width: 100%;
+  font-size: 1rem;
+  color: var(--text);
+  background: transparent;
+  font-family: inherit;
+}
+
+.searchBar input::placeholder {
+  color: var(--text-light);
+  opacity: 0.7;
+}
+
+/* Área de perfil con animación */
+.profileArea {
+  position: relative;
+}
+
+.profileIcon {
+  cursor: pointer;
+  color: white;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.profileIcon:hover {
+  color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-1px);
+}
+
+.profileMenu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.5rem);
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  min-width: 180px;
+  z-index: 110;
+  opacity: 0;
+  transform: translateY(-10px);
+  visibility: hidden;
+  transition: var(--transition);
+}
+
+.profileMenu.visible {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.profileMenu button {
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  font-weight: 500;
+  color: var(--text);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.profileMenu button:hover {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+/* Contenido principal */
+.mainContent {
+  flex-grow: 1;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Secciones con efecto de vidrio */
+.section {
+  margin-bottom: 2.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: var(--transition);
+}
+
+.section:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 600;
+}
+
+.section h2::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--primary), transparent);
+  margin-left: 1rem;
+}
+
+/* Botones modernos con animación */
+.actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.button:hover::after {
+  transform: translateX(0);
+}
+
+.primaryButton {
+  background-color: var(--primary);
+  color: white;
+}
+
+.primaryButton:hover:not(:disabled) {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
+}
+
+.secondaryButton {
+  background-color: var(--primary-light);
+  color: var(--primary);
+}
+
+.secondaryButton:hover:not(:disabled) {
+  background-color: #d1d5fe;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(199, 210, 254, 0.3);
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Listas modernas con animación */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  max-height: 400px;
+  overflow-y: auto;
+  box-shadow: var(--shadow-sm);
+}
+
+.listItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 1rem;
+  color: var(--text);
+  transition: var(--transition);
+  position: relative;
+}
+
+.listItem:hover {
+  background-color: rgba(99, 102, 241, 0.03);
+  transform: translateX(5px);
+}
+
+.listItem:last-child {
+  border-bottom: none;
+}
+
+/* Tags modernos */
+.tag {
+  background-color: var(--primary-light);
+  color: var(--primary);
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-left: 0.75rem;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tagMateria {
+  background-color: #d1fae5;
+  color: #065f46;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-left: 0.75rem;
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Acciones con efecto flotante */
+.actionsItem {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.actionsItem button, .actionsItem label {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-light);
+  font-size: 1.1rem;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  width: 36px;
+  height: 36px;
+}
+
+.actionsItem button:hover:not(:disabled), 
+.actionsItem label:hover:not(:disabled) {
+  color: var(--primary);
+  background-color: var(--primary-light);
+  transform: translateY(-2px);
+}
+
+.deleteButton:hover:not(:disabled) {
+  color: var(--danger);
+  background-color: var(--danger-light);
+}
+
+/* Modal con efecto de aparición */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(31, 41, 55, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease forwards;
+  backdrop-filter: blur(5px);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  width: 480px;
+  max-width: 95vw;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(20px);
+  opacity: 0;
+  animation: modalSlideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@keyframes modalSlideIn {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal h2 {
+  margin-bottom: 1.75rem;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.75rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+/* Formularios modernos */
+.formGroup {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.formLabel {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.formLabel::after {
+  content: '*';
+  color: var(--danger);
+  display: none;
+}
+
+.formLabel[required]::after {
+  display: inline;
+}
+
+.formInput {
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 1rem;
+  transition: var(--transition);
+  outline: none;
+  font-family: inherit;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.formInput:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.formActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Animación de spinner */
+.spinner {
+  animation: spin 1s linear infinite;
+  font-size: 1.2rem;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Estados de carga y error */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: var(--primary);
+  padding: 2rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.error {
+  color: var(--danger);
+  background: var(--danger-light);
+  padding: 1.25rem;
+  border-radius: var(--radius);
+  font-weight: 500;
+  text-align: center;
+  margin: 1.5rem 0;
+  border-left: 4px solid var(--danger);
+}
+
+/* Barra de scroll personalizada */
+.list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.list::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.5);
+  border-radius: var(--radius);
+}
+
+.list::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Efectos hover para elementos interactivos */
+.downloadLink {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 1rem;
+  font-size: 0.95rem;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  transition: var(--transition);
+  background-color: var(--primary-light);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.downloadLink:hover {
+  background-color: #d1d5fe;
+  transform: translateY(-1px);
+}
+
+/* Efecto de skeleton loading */
+.skeleton {
+  animation: skeleton-loading 1.5s infinite ease-in-out;
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+  background-size: 200% 100%;
+  border-radius: var(--radius);
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .searchBar {
+    width: 100%;
+  }
+  
+  .mainContent {
+    padding: 1rem;
+  }
+  
+  .section {
+    padding: 1.25rem;
+  }
+  
+  .actions {
+    flex-direction: column;
+  }
+}
+
+/* Animación de notificación */
+.notification {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--primary);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  transform: translateY(100px);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.notification.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+
+/* Agregar estas clases al CSS */
+.emptyMessage {
+  text-align: center;
+  color: var(--text-light);
+  padding: 2rem;
+}
+
+.itemContent {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.itemTitle {
+  font-weight: 500;
+}
+
+.tagsContainer {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.folderIcon, .fileIcon {
+  color: var(--primary);
+}
+
+.cancelButton {
+  background-color: var(--danger-light);
+  color: var(--danger);
+}
+
+.cancelButton:hover {
+  background-color: var(--danger);
+  color: white;
+}

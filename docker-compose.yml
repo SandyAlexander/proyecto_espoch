@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  mariadb:
+    image: mariadb:10.5
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: espoch_db
+      MYSQL_USER: espoch_user
+      MYSQL_PASSWORD: espochadmin
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+  nextcloud:
+    image: nextcloud
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - nextcloud_data:/var/www/html
+    depends_on:
+      - mariadb
+
+volumes:
+  mariadb_data:
+  nextcloud_data:

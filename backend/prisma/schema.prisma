@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Docente {
+  id            Int         @id @default(autoincrement())
+  nombres       String
+  apellidos     String
+  correo        String      @unique
+  contrasena    String
+  rol           String
+  telefono      String?
+  departamento  String?
+  materias      Materia[]   @relation("DocenteMaterias")
+  documentos    Documento[] // Relación añadida
+  creadoEn      DateTime    @default(now())
+  actualizadoEn DateTime    @updatedAt
+}
+
+model Materia {
+  id        Int     @id @default(autoincrement())
+  nombre    String?
+  curso     String?
+  horas     Int?
+  docenteId Int
+  docente   Docente @relation(fields: [docenteId], references: [id], name: "DocenteMaterias")
+}
+
+model Documento {
+  id            Int      @id @default(autoincrement())
+  titulo        String
+  tipo          String
+  nombreArchivo String
+  url           String
+  peso          Int
+  fechaSubida   DateTime @default(now())
+  docenteId     Int
+  docente       Docente  @relation(fields: [docenteId], references: [id])
+}
+
+model Folder {
+  id    Int    @id @default(autoincrement())
+  name  String
+  files File[]
+}
+
+model File {
+  id           Int    @id @default(autoincrement())
+  originalName String
+  path         String
+  size         Int
+  folderId     Int
+  folder       Folder @relation(fields: [folderId], references: [id])
+}
