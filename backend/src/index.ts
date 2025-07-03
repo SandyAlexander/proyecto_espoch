@@ -7,7 +7,6 @@ import folderRoutes from './routes/folderRoutes';
 import fileRoutes from './routes/fileRoutes';
 import documentoRoutes from './routes/documentoRoutes';
 import authRoutes from './routes/authRoutes';
-import fileBucketRoutes from './routes/fileBucketsRoutes';
 
 
 
@@ -23,7 +22,6 @@ app.use('/api/folders', folderRoutes);
 app.use('/api/files', fileRoutes);
 app.use('/api/documentos', documentoRoutes);
 app.use('/api/auth', authRoutes);
-app.use('/api/file',fileBucketRoutes );
 
 
 const PORT = process.env.PORT || 4000;
